@@ -5,17 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-  crossorigin="anonymous"
-/>
-    <title>Document</title>
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <title>Avatar with Mesh Background</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+        background-color: #ffffff;
+      }
+      canvas {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+      .content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: white;
+        font-family: Arial, sans-serif;
+        padding-top: 40vh;
+        pointer-events: none;
+      }
+      .surprise-button {
+        position: relative;
+        z-index: 2;
+      }
+      .avatar-section {
+        z-index: 2;
+      }
+    </style>
   </head>
   <body>
-    <button class="icon icon-fill surprise-button">
+    <canvas id="meshCanvas"></canvas>
+    
+    <div class="social-icons">
+      <button class="icon icon-fill surprise-button">
         <i class="fas fa-envelope"></i>
       </button>
-      
+      <button class="icon icon-fill surprise-button">
+        <i class="fab fa-linkedin"></i>
+      </button>
+    </div>
+    
     <div class="avatar-section">
       <div class="hair">
         <div id="hair-blob-1" class="blob" style="--i: 0"></div>
@@ -55,89 +94,170 @@
         </div>
         <div class="mouth"></div>
       </div>
+      <div class="about-me">
+        <h2>SDE - Full Stack Engineer</h2>
+        <p>
+          Centering Divs, Merging PRs on Friday to ruin my weekends. Yes I am a Full stack Dev, waiting for you to contact me let's have a nice chat. I also like creative designing. Oh and btw I play harmonium  
+          <br><br>
+        </p>
+      </div>
     </div>
+
+    <script>
+      // Track button hover state
+      let isHoveringButton = false;
+
+      const surpriseButtons = document.querySelectorAll('.surprise-button');
+      const eyes = document.querySelectorAll('.eye');
+      const mouth = document.querySelector('.mouth');
+      const eyelidLeft = document.querySelector('.eyelid-left')
+      const eyelidRight = document.querySelector('.eyelid-right')
+
+      surpriseButtons.forEach(surpriseButton => surpriseButton.addEventListener('mouseenter', () => {
+        isHoveringButton = true;
+        
+        
+        eyelidLeft.style.border = '0px';
+        eyelidRight.style.border = '0px ';
+        // Transform eyes to hearts and grow
+        eyes.forEach(eye => {
+          eye.style.borderRadius = '50% 50% 50% 50% / 60% 60% 40% 40%';
+          eye.style.transform = ' scale(1.5)';
+          eye.style.height = '20px';
+          eye.style.width = '20px';
+          eye.style.transition = 'all 0.1s ease-in-out';
+        });
+        
+        // Transform mouth to filled black circle and grow
+        mouth.style.borderRadius = '50%';
+        mouth.style.backgroundColor = 'black';
+        mouth.style.transform = 'scale(2)';
+        mouth.style.transition = 'all 0.1s ease-in-out';
+        mouth.style.height = '15px';
+        mouth.style.width = '15px';
+      }));
+
+      surpriseButtons.forEach(surpriseButton => surpriseButton.addEventListener('mouseleave', () => {
+        isHoveringButton = false;
+        
+        eyelidLeft.style.border = '3px solid black';
+        eyelidRight.style.border = '3px solid black';
+
+        // Reset eyes
+        eyes.forEach(eye => {
+          eye.style.borderRadius = '';
+          eye.style.transform = '';
+          eye.style.height = '20px';
+          eye.style.width = '20px';
+          eye.style.transition = 'all 0.1s ease-in-out';
+        });
+        
+        // Reset mouth
+        mouth.style.borderRadius = '';
+        mouth.style.backgroundColor = '';
+        mouth.style.transform = '';
+        mouth.style.transition = 'all 0.1s ease-in-out';
+        mouth.style.width = '46px';
+        mouth.style.height = '';
+        mouth.style.bottom = "30px";
+      }));
+
+      // Mesh Canvas Background Script
+      const canvas = document.getElementById('meshCanvas');
+      const ctx = canvas.getContext('2d');
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      const spacing = 40;
+      const dotRadius = 2;
+      const hueSpeed = 1;
+      const neighborOffset = 2;
+
+      let globalHue = 0;
+
+      function drawFrame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        globalHue = (globalHue + hueSpeed) % 360;
+
+        const cols = Math.ceil(canvas.width / spacing);
+        const rows = Math.ceil(canvas.height / spacing);
+
+        for (let row = 0; row <= rows; row++) {
+          for (let col = 0; col <= cols; col++) {
+            const x = col * spacing + (spacing / 2);
+            const y = row * spacing + (spacing / 2);
+
+            const hue = (globalHue + (col + row) * neighborOffset) % 360;
+
+            ctx.fillStyle = `hsl(${hue}, 80%, 65%)`;
+            ctx.beginPath();
+            ctx.arc(x, y, dotRadius, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        requestAnimationFrame(drawFrame);
+      }
+
+      requestAnimationFrame(drawFrame);
+
+      // Avatar Mouse Tracking Script
+      (function () {
+        const glasses = document.querySelector(".eye-glass");
+        const eyes = document.querySelectorAll(".eye");
+        const eyelids = document.querySelectorAll(".eyelid-left, .eyelid-right");
+        const mouth = document.querySelector(".mouth");
+        const face = document.querySelector(".face");
+        const hairBlobs = document.querySelectorAll(".blob");
+        let last = { x: 0, y: 0, t: Date.now() };
+
+        const eyeMaxOffsets = Array.from(eyes).map((eye, i) => {
+          const lid = eyelids[i];
+          const lidRect = lid.getBoundingClientRect();
+          const eyeRect = eye.getBoundingClientRect();
+          return (lidRect.width - eyeRect.width) / 2;
+        });
+
+        window.addEventListener("mousemove", (e) => {
+          const now = Date.now();
+          const dt = now - last.t || 16;
+          const dx = e.clientX - last.x;
+          const dy = e.clientY - last.y;
+          const speed = Math.hypot(dx, dy) / dt;
+          last = { x: e.clientX, y: e.clientY, t: now };
+
+          const cx = window.innerWidth / 2;
+          const cy = window.innerHeight / 2;
+          const rx = (e.clientX - cx) / cx;
+          const ry = (e.clientY - cy) / cy;
+
+          // Determine direction multiplier based on button hover state
+          const directionMultiplier = isHoveringButton ? 1 : -1;
+
+          const faceX = directionMultiplier * rx * 4;
+          const faceY = directionMultiplier * ry * 3;
+          face.style.transform = `translate(${faceX}px, ${faceY}px)`;
+
+          glasses.style.transform = `translate(${directionMultiplier * rx * 10}px, ${directionMultiplier * ry * 6}px)`;
+
+          eyes.forEach((eye, i) => {
+            // Only apply eye movement if not in heart mode
+            if (!isHoveringButton) {
+              eye.style.transform = `translateX(${directionMultiplier * rx * eyeMaxOffsets[i]}px)`;
+            }
+          });
+
+          // Apply mouth movement with appropriate direction
+          if (!isHoveringButton) {
+            mouth.style.transform = `translate(${directionMultiplier * rx * 10}px, ${directionMultiplier * ry * 4}px)`;
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
-<script>
-  (function () {
-    const glasses = document.querySelector(".eye-glass");
-    const eyes = document.querySelectorAll(".eye");
-    const eyelids = document.querySelectorAll(".eyelid-left, .eyelid-right");
-    const mouth = document.querySelector(".mouth");
-    const face = document.querySelector(".face");
-    const hairBlobs = document.querySelectorAll(".blob");
-    let last = { x: 0, y: 0, t: Date.now() };
-
-    // Precompute each eye’s max horizontal offset
-    const eyeMaxOffsets = Array.from(eyes).map((eye, i) => {
-      const lid = eyelids[i];
-      const lidRect = lid.getBoundingClientRect();
-      const eyeRect = eye.getBoundingClientRect();
-      return (lidRect.width - eyeRect.width) / 2;
-    });
-
-    //       function triggerHairJiggle() {
-    //   hairBlobs.forEach(blob => {
-    //     const amp  = 2 + Math.random() * 3;    // between 2° and 5°
-    //     const dur  = 0.3 + Math.random() * 0.4; // between 0.3s and 0.7s
-    //     const name = `jiggle-${amp.toFixed(1)}`;
-
-    //     // dynamically create a keyframe for this amplitude
-    //     const rule = `
-    //       @keyframes ${name} {
-    //         0%   { transform: none; }
-    //         25%  { transform: translate(${amp}px, -${amp}px) rotate(-${amp}deg); }
-    //         50%  { transform: translate(-${amp}px, ${amp}px) rotate(${amp}deg); }
-    //         75%  { transform: translate(${amp}px, ${amp}px) rotate(-${amp/2}deg); }
-    //         100% { transform: none; }
-    //       }
-    //     `;
-
-    //     // remove any old style tag, insert new one
-    //     let style = blob._jiggleStyle;
-    //     if (style) style.remove();
-    //     style = document.createElement('style');
-    //     style.textContent = rule;
-    //     document.head.append(style);
-    //     blob._jiggleStyle = style;
-
-    //     // trigger it
-    //     blob.style.animation = 'none';
-    //     blob.offsetWidth;
-    //     blob.style.animation = `${name} ${dur}s ease-in-out`;
-    //   });
-    // }
-
-    window.addEventListener("mousemove", (e) => {
-      const now = Date.now();
-      const dt = now - last.t || 16;
-      const dx = e.clientX - last.x;
-      const dy = e.clientY - last.y;
-      const speed = Math.hypot(dx, dy) / dt;
-      // if (speed > 0.5) triggerHairJiggle();
-      last = { x: e.clientX, y: e.clientY, t: now };
-
-      // normalize to [-1,1]
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      const rx = (e.clientX - cx) / cx;
-      const ry = (e.clientY - cy) / cy;
-
-      // subtle face movement (opposite direction)
-      const faceX = -rx * 4; // px
-      const faceY = -ry * 3; // px
-      face.style.transform = `translate(${faceX}px, ${faceY}px)`;
-
-      // glasses
-      glasses.style.transform = `translate(${-rx * 10}px, ${-ry * 6}px)`;
-
-      // eyes (full horizontal travel)
-      eyes.forEach((eye, i) => {
-        eye.style.transform = `translateX(${-rx * eyeMaxOffsets[i]}px)`;
-      });
-
-      // mouth (full-range nudge)
-      mouth.style.transform = `translate(${-rx * 10}px, ${-ry * 4}px)`;
-    });
-  })();
-</script>
