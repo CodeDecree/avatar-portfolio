@@ -1,8 +1,11 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
     margin: 0;
     padding: 0;
-    background-color: #814a4a;
-    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    background-color: #fff7ec;
+    font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
 }
 
 .hair {
@@ -54,12 +57,17 @@ body{
     50%  { transform: translate(3px, -3px) rotate(10deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
   }
+
+.first-page {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
   
 .avatar-section{
-    position: absolute;
-    height: 80vh;
+    position: relative;
+    height: 40vh;
     width: 50vw;
-    top: 15%;
     left: 25%;
     background-color: transparent;
     display: flex;
@@ -276,10 +284,10 @@ body{
   
   /*# sourceMappingURL=buttons.css.map */
   .about-me {
-    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-family: inherit;
     background: transparent;
     padding: 0;
-    margin: 0;
+    margin-left: 25%;
     border-radius: 16px;
     max-width: 700px;
     /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); */
@@ -287,7 +295,7 @@ body{
   }
 
   .about-me h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #3f3d56;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -302,4 +310,8 @@ body{
 
   .emoji {
     font-size: 1.3rem;
+  }
+  .second-page {
+    display: flex;
+    height: 100vh;
   }
