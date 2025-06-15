@@ -1,230 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      crossorigin="anonymous"
-    />
-    <title>Avatar with Mesh Background</title>
-    <style>
-      canvas {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
-      }
 
-      .content {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-        color: white;
-        font-family: Arial, sans-serif;
-        padding-top: 40vh;
-        pointer-events: none;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous" />
+  <title>Avatar with Mesh Background</title>
+  <style>
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
 
-      .surprise-button {
-        position: relative;
-        z-index: 2;
-      }
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding-top: 40vh;
+      pointer-events: none;
+    }
 
-      .avatar-section {
-        z-index: 2;
-      }
-    </style>
-  </head>
+    .surprise-button {
+      position: relative;
+      z-index: 2;
+    }
 
-  <body>
-    <div class="social-icons">
-      <button class="icon icon-fill surprise-button">
-        <i class="fas fa-envelope"></i>
-      </button>
-      <button class="icon icon-fill surprise-button">
-        <i class="fab fa-linkedin"></i>
-      </button>
-    </div>
-    <div class="first-page">
-      <div class="avatar-section">
-        <div class="hair">
-          <div id="hair-blob-1" class="blob" style="--i: 0"></div>
-          <div id="hair-blob-2" class="blob" style="--i: 1"></div>
-          <div id="hair-blob-3" class="blob" style="--i: 2"></div>
-          <div id="hair-blob-4" class="blob" style="--i: 3"></div>
-          <div id="hair-blob-5" class="blob" style="--i: 4"></div>
-          <div id="hair-blob-6" class="blob" style="--i: 5"></div>
-          <div id="hair-blob-7" class="blob" style="--i: 6"></div>
-          <div id="hair-blob-8" class="blob" style="--i: 7"></div>
-          <div id="hair-blob-9" class="blob" style="--i: 8"></div>
-          <div id="hair-blob-10" class="blob" style="--i: 9"></div>
-          <div id="hair-blob-11" class="blob" style="--i: 10"></div>
-          <div id="hair-blob-12" class="blob" style="--i: 11"></div>
-          <div id="hair-blob-13" class="blob" style="--i: 12"></div>
-          <div id="hair-blob-14" class="blob" style="--i: 13"></div>
-          <div id="hair-blob-15" class="blob" style="--i: 14"></div>
-          <div id="hair-blob-16" class="blob" style="--i: 15"></div>
-          <div id="hair-blob-17" class="blob" style="--i: 16"></div>
-          <div id="hair-blob-18" class="blob" style="--i: 17"></div>
-          <div id="hair-blob-19" class="blob" style="--i: 18"></div>
-          <div id="hair-blob-20" class="blob" style="--i: 19"></div>
-          <div id="hair-blob-21" class="blob" style="--i: 20"></div>
-        </div>
+    .avatar-section {
+      z-index: 2;
+    }
+  </style>
+</head>
 
-        <div class="face">
-          <div class="eye-glass">
-            <div class="eye-glass-left"></div>
-            <div class="rim"></div>
-            <div class="eye-glass-right"></div>
-          </div>
-          <div class="eyelid-left">
-            <div class="eye eye-left"></div>
-          </div>
-          <div class="eyelid-right">
-            <div class="eye eye-right"></div>
-          </div>
-          <div class="mouth"></div>
-        </div>
+<body>
+  <div class="social-icons">
+    <button class="icon icon-fill surprise-button">
+      <i class="fas fa-envelope"></i>
+    </button>
+    <button class="icon icon-fill surprise-button">
+      <i class="fab fa-linkedin"></i>
+    </button>
+  </div>
+  <div class="first-page">
+    <div class="avatar-section">
+      <div class="hair">
+        <div id="hair-blob-1" class="blob" style="--i: 0"></div>
+        <div id="hair-blob-2" class="blob" style="--i: 1"></div>
+        <div id="hair-blob-3" class="blob" style="--i: 2"></div>
+        <div id="hair-blob-4" class="blob" style="--i: 3"></div>
+        <div id="hair-blob-5" class="blob" style="--i: 4"></div>
+        <div id="hair-blob-6" class="blob" style="--i: 5"></div>
+        <div id="hair-blob-7" class="blob" style="--i: 6"></div>
+        <div id="hair-blob-8" class="blob" style="--i: 7"></div>
+        <div id="hair-blob-9" class="blob" style="--i: 8"></div>
+        <div id="hair-blob-10" class="blob" style="--i: 9"></div>
+        <div id="hair-blob-11" class="blob" style="--i: 10"></div>
+        <div id="hair-blob-12" class="blob" style="--i: 11"></div>
+        <div id="hair-blob-13" class="blob" style="--i: 12"></div>
+        <div id="hair-blob-14" class="blob" style="--i: 13"></div>
+        <div id="hair-blob-15" class="blob" style="--i: 14"></div>
+        <div id="hair-blob-16" class="blob" style="--i: 15"></div>
+        <div id="hair-blob-17" class="blob" style="--i: 16"></div>
+        <div id="hair-blob-18" class="blob" style="--i: 17"></div>
+        <div id="hair-blob-19" class="blob" style="--i: 18"></div>
+        <div id="hair-blob-20" class="blob" style="--i: 19"></div>
+        <div id="hair-blob-21" class="blob" style="--i: 20"></div>
       </div>
-      <div class="about-me">
-        <h2>SDE - Full Stack Engineer</h2>
-        <p>
-          Centering Divs, Merging PRs on Friday to ruin my weekends<br />
-          Yes, I’m a Full Stack Engineer who likes to build, break, and fix
-          things.<br />
-          Also: I design stuff. I play harmonium. Let’s chat!
-          <br /><br />
-        </p>
+
+      <div class="face">
+        <div class="eye-glass">
+          <div class="eye-glass-left"></div>
+          <div class="rim"></div>
+          <div class="eye-glass-right"></div>
+        </div>
+        <div class="eyelid-left">
+          <div class="eye eye-left"></div>
+        </div>
+        <div class="eyelid-right">
+          <div class="eye eye-right"></div>
+        </div>
+        <div class="mouth"></div>
       </div>
     </div>
-    <div class="second-page"></div>
+    <div class="about-me">
+      <h2>SDE - Full Stack Engineer</h2>
+      <p>
+        Centering Divs, Merging PRs on Friday to ruin my weekends<br />
+        Yes, I’m a Full Stack Engineer who likes to build, break, and fix
+        things.<br />
+        Also: I design stuff. I play harmonium. Let’s chat!
+        <br /><br />
+      </p>
+    </div>
+  </div>
+  <div class="second-page">
+    <div class="container">
+      <h1 class="section-title">My Projects</h1>
+      <p class="section-subtitle">Explore my latest work and creative endeavors. Hover over the images to see them come
+        to life!</p>
 
-    <script>
-      // Track button hover state
-      let isHoveringButton = false;
+      <div class="projects-grid">
+        <!-- Project Card 1 -->
+        <div class="project-card">
+          <div class="image-container" onclick="toggleImage(this)">
+            <img src="assets/mightysolutions.png" alt="E-Commerce Project"
+              class="project-image" data-static="assets/mightysolutions.png"
+              data-gif="assets/gif/mightysolutions.gif">
+            <div class="play-indicator">
+              <div class="play-icon"></div>
+            </div>
+          </div>
+          <h3 class="project-title">E-Commerce Platform</h3>
+          <p class="project-description">A full-stack e-commerce solution with user authentication, payment integration,
+            and admin dashboard. Features include product catalog, shopping cart, and order management.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Stripe</span>
+            <span class="tech-tag">Express</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link btn-primary">Live Demo</a>
+            <a href="#" class="project-link btn-secondary">GitHub</a>
+          </div>
+        </div>
 
-      const surpriseButtons = document.querySelectorAll(".surprise-button");
-      const eyes = document.querySelectorAll(".eye");
-      const mouth = document.querySelector(".mouth");
-      const eyelidLeft = document.querySelector(".eyelid-left");
-      const eyelidRight = document.querySelector(".eyelid-right");
+        <!-- Project Card 2 -->
+        <div class="project-card">
+          <div class="image-container" onclick="toggleImage(this)">
+            <img src="assets/crossword.png" alt="Weather App Project"
+              class="project-image" data-static="assets/crossword.png"
+              data-gif="assets/gif/crossword.gif">
+            <div class="play-indicator">
+              <div class="play-icon"></div>
+            </div>
+          </div>
+          <h3 class="project-title">Weather Dashboard</h3>
+          <p class="project-description">A responsive weather application with location-based forecasts, interactive
+            maps, and weather alerts. Includes 7-day forecasts and weather history.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">OpenWeather API</span>
+            <span class="tech-tag">Chart.js</span>
+            <span class="tech-tag">PWA</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link btn-primary">Live Demo</a>
+            <a href="#" class="project-link btn-secondary">GitHub</a>
+          </div>
+        </div>
 
-      surpriseButtons.forEach((surpriseButton) =>
-        surpriseButton.addEventListener("mouseenter", () => {
-          isHoveringButton = true;
+        <!-- Project Card 3 -->
+        <div class="project-card">
+          <div class="image-container" onclick="toggleImage(this)">
+            <img src="https://via.placeholder.com/350x200/45b7d1/ffffff?text=Task+Manager" alt="Task Manager Project"
+              class="project-image" data-static="https://via.placeholder.com/350x200/45b7d1/ffffff?text=Task+Manager"
+              data-gif="https://via.placeholder.com/350x200/96c93d/ffffff?text=Task+Flow">
+            <div class="play-indicator">
+              <div class="play-icon"></div>
+            </div>
+          </div>
+          <h3 class="project-title">Task Management System</h3>
+          <p class="project-description">A collaborative task management tool with real-time updates, team collaboration
+            features, and progress tracking. Includes Kanban boards and time tracking.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Angular</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Socket.io</span>
+            <span class="tech-tag">Material UI</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link btn-primary">Live Demo</a>
+            <a href="#" class="project-link btn-secondary">GitHub</a>
+          </div>
+        </div>
 
-          eyelidLeft.style.border = "0px";
-          eyelidRight.style.border = "0px ";
-          // Transform eyes to hearts and grow
-          eyes.forEach((eye) => {
-            eye.style.borderRadius = "50% 50% 50% 50% / 60% 60% 40% 40%";
-            eye.style.transform = " scale(1.5)";
-            eye.style.height = "20px";
-            eye.style.width = "20px";
-            eye.style.transition = "all 0.1s ease-in-out";
-          });
+        <!-- Project Card 4 -->
+        <div class="project-card">
+          <div class="image-container" onclick="toggleImage(this)">
+            <img src="https://via.placeholder.com/350x200/f093fb/ffffff?text=Portfolio+Site" alt="Portfolio Project"
+              class="project-image" data-static="https://via.placeholder.com/350x200/f093fb/ffffff?text=Portfolio+Site"
+              data-gif="https://via.placeholder.com/350x200/f5576c/ffffff?text=Interactive+Portfolio">
+            <div class="play-indicator">
+              <div class="play-icon"></div>
+            </div>
+          </div>
+          <h3 class="project-title">Interactive Portfolio</h3>
+          <p class="project-description">A modern, responsive portfolio website with smooth animations, dark mode
+            toggle, and interactive elements. Features project showcases and contact forms.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">Framer Motion</span>
+            <span class="tech-tag">Vercel</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link btn-primary">Live Demo</a>
+            <a href="#" class="project-link btn-secondary">GitHub</a>
+          </div>
+        </div>
+      </div>
 
-          // Transform mouth to filled black circle and grow
-          mouth.style.borderRadius = "50%";
-          mouth.style.backgroundColor = "black";
-          mouth.style.transform = "scale(2)";
-          mouth.style.transition = "all 0.1s ease-in-out";
-          mouth.style.height = "15px";
-          mouth.style.width = "15px";
-        })
-      );
+      <script>
+        // Track button hover state
+        let isHoveringButton = false;
 
-      surpriseButtons.forEach((surpriseButton) =>
-        surpriseButton.addEventListener("mouseleave", () => {
-          isHoveringButton = false;
-
-          eyelidLeft.style.border = "3px solid black";
-          eyelidRight.style.border = "3px solid black";
-
-          // Reset eyes
-          eyes.forEach((eye) => {
-            eye.style.borderRadius = "";
-            eye.style.transform = "";
-            eye.style.height = "20px";
-            eye.style.width = "20px";
-            eye.style.transition = "all 0.1s ease-in-out";
-          });
-
-          // Reset mouth
-          mouth.style.borderRadius = "";
-          mouth.style.backgroundColor = "";
-          mouth.style.transform = "";
-          mouth.style.transition = "all 0.1s ease-in-out";
-          mouth.style.width = "46px";
-          mouth.style.height = "";
-          mouth.style.bottom = "30px";
-        })
-      );
-
-      // Avatar Mouse Tracking Script
-      (function () {
-        const glasses = document.querySelector(".eye-glass");
+        const surpriseButtons = document.querySelectorAll(".surprise-button");
         const eyes = document.querySelectorAll(".eye");
-        const eyelids = document.querySelectorAll(
-          ".eyelid-left, .eyelid-right"
-        );
         const mouth = document.querySelector(".mouth");
-        const face = document.querySelector(".face");
-        const hairBlobs = document.querySelectorAll(".blob");
-        let last = { x: 0, y: 0, t: Date.now() };
+        const eyelidLeft = document.querySelector(".eyelid-left");
+        const eyelidRight = document.querySelector(".eyelid-right");
 
-        const eyeMaxOffsets = Array.from(eyes).map((eye, i) => {
-          const lid = eyelids[i];
-          const lidRect = lid.getBoundingClientRect();
-          const eyeRect = eye.getBoundingClientRect();
-          return (lidRect.width - eyeRect.width) / 2;
-        });
+        surpriseButtons.forEach((surpriseButton) =>
+          surpriseButton.addEventListener("mouseenter", () => {
+            isHoveringButton = true;
 
-        window.addEventListener("mousemove", (e) => {
-          const now = Date.now();
-          const dt = now - last.t || 16;
-          const dx = e.clientX - last.x;
-          const dy = e.clientY - last.y;
-          const speed = Math.hypot(dx, dy) / dt;
-          last = { x: e.clientX, y: e.clientY, t: now };
+            eyelidLeft.style.border = "0px";
+            eyelidRight.style.border = "0px ";
+            // Transform eyes to hearts and grow
+            eyes.forEach((eye) => {
+              eye.style.borderRadius = "50% 50% 50% 50% / 60% 60% 40% 40%";
+              eye.style.transform = " scale(1.5)";
+              eye.style.height = "20px";
+              eye.style.width = "20px";
+              eye.style.transition = "all 0.1s ease-in-out";
+            });
 
-          const cx = window.innerWidth / 2;
-          const cy = window.innerHeight / 2;
-          const rx = (e.clientX - cx) / cx;
-          const ry = (e.clientY - cy) / cy;
+            // Transform mouth to filled black circle and grow
+            mouth.style.borderRadius = "50%";
+            mouth.style.backgroundColor = "black";
+            mouth.style.transform = "scale(2)";
+            mouth.style.transition = "all 0.1s ease-in-out";
+            mouth.style.height = "15px";
+            mouth.style.width = "15px";
+          })
+        );
 
-          // Determine direction multiplier based on button hover state
-          const directionMultiplier = isHoveringButton ? 1 : -1;
+        surpriseButtons.forEach((surpriseButton) =>
+          surpriseButton.addEventListener("mouseleave", () => {
+            isHoveringButton = false;
 
-          const faceX = directionMultiplier * rx * 4;
-          const faceY = directionMultiplier * ry * 3;
-          face.style.transform = `translate(${faceX}px, ${faceY}px)`;
+            eyelidLeft.style.border = "3px solid black";
+            eyelidRight.style.border = "3px solid black";
 
-          glasses.style.transform = `translate(${
-            directionMultiplier * rx * 10
-          }px, ${directionMultiplier * ry * 6}px)`;
+            // Reset eyes
+            eyes.forEach((eye) => {
+              eye.style.borderRadius = "";
+              eye.style.transform = "";
+              eye.style.height = "20px";
+              eye.style.width = "20px";
+              eye.style.transition = "all 0.1s ease-in-out";
+            });
 
-          eyes.forEach((eye, i) => {
-            // Only apply eye movement if not in heart mode
+            // Reset mouth
+            mouth.style.borderRadius = "";
+            mouth.style.backgroundColor = "";
+            mouth.style.transform = "";
+            mouth.style.transition = "all 0.1s ease-in-out";
+            mouth.style.width = "46px";
+            mouth.style.height = "";
+            mouth.style.bottom = "30px";
+          })
+        );
+
+        // Avatar Mouse Tracking Script
+        (function () {
+          const glasses = document.querySelector(".eye-glass");
+          const eyes = document.querySelectorAll(".eye");
+          const eyelids = document.querySelectorAll(
+            ".eyelid-left, .eyelid-right"
+          );
+          const mouth = document.querySelector(".mouth");
+          const face = document.querySelector(".face");
+          const hairBlobs = document.querySelectorAll(".blob");
+          let last = { x: 0, y: 0, t: Date.now() };
+
+          const eyeMaxOffsets = Array.from(eyes).map((eye, i) => {
+            const lid = eyelids[i];
+            const lidRect = lid.getBoundingClientRect();
+            const eyeRect = eye.getBoundingClientRect();
+            return (lidRect.width - eyeRect.width) / 2;
+          });
+
+          window.addEventListener("mousemove", (e) => {
+            const now = Date.now();
+            const dt = now - last.t || 16;
+            const dx = e.clientX - last.x;
+            const dy = e.clientY - last.y;
+            const speed = Math.hypot(dx, dy) / dt;
+            last = { x: e.clientX, y: e.clientY, t: now };
+
+            const cx = window.innerWidth / 2;
+            const cy = window.innerHeight / 2;
+            const rx = (e.clientX - cx) / cx;
+            const ry = (e.clientY - cy) / cy;
+
+            // Determine direction multiplier based on button hover state
+            const directionMultiplier = isHoveringButton ? 1 : -1;
+
+            const faceX = directionMultiplier * rx * 4;
+            const faceY = directionMultiplier * ry * 3;
+            face.style.transform = `translate(${faceX}px, ${faceY}px)`;
+
+            glasses.style.transform = `translate(${directionMultiplier * rx * 10
+              }px, ${directionMultiplier * ry * 6}px)`;
+
+            eyes.forEach((eye, i) => {
+              // Only apply eye movement if not in heart mode
+              if (!isHoveringButton) {
+                eye.style.transform = `translateX(${directionMultiplier * rx * eyeMaxOffsets[i]
+                  }px)`;
+              }
+            });
+
+            // Apply mouth movement with appropriate direction
             if (!isHoveringButton) {
-              eye.style.transform = `translateX(${
-                directionMultiplier * rx * eyeMaxOffsets[i]
-              }px)`;
+              mouth.style.transform = `translate(${directionMultiplier * rx * 10
+                }px, ${directionMultiplier * ry * 4}px)`;
             }
           });
+        })();
 
-          // Apply mouth movement with appropriate direction
-          if (!isHoveringButton) {
-            mouth.style.transform = `translate(${
-              directionMultiplier * rx * 10
-            }px, ${directionMultiplier * ry * 4}px)`;
-          }
+        function toggleImage(container) {
+            const img = container.querySelector('.project-image');
+            const staticSrc = img.getAttribute('data-static');
+            const gifSrc = img.getAttribute('data-gif');
+            
+            if (img.src.includes(staticSrc.split('/').pop())) {
+                img.src = gifSrc;
+                setTimeout(() => {
+                    img.src = staticSrc;
+                }, 3000); // Show gif for 3 seconds
+            }
+        }
+
+        // Enhanced hover effects
+        document.querySelectorAll('.image-container').forEach(container => {
+            const img = container.querySelector('.project-image');
+            const staticSrc = img.getAttribute('data-static');
+            const gifSrc = img.getAttribute('data-gif');
+            
+            container.addEventListener('mouseenter', () => {
+                img.src = gifSrc;
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                img.src = staticSrc;
+            });
         });
-      })();
-    </script>
-  </body>
+
+        // Add smooth scrolling and intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add click effects to tech tags
+        document.querySelectorAll('.tech-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    tag.style.transform = 'translateY(-2px)';
+                }, 150);
+            });
+        });
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.project-link').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.height, rect.width);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(0, 0, 0, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            .project-link {
+                position: relative;
+                overflow: hidden;
+            }
+        `;
+        document.head.appendChild(style);
+        window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.getElementById("second-page").scrollIntoView({ behavior: "smooth" });
+    }, 1000); // delay in milliseconds
+  });
+      </script>
+</body>
+
 </html>
