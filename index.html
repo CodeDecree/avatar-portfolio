@@ -1,216 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="projectDiv.css" />
+    <link rel="stylesheet" href="workExperience.css" />
+    <link rel="stylesheet" href="achievement.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    crossorigin="anonymous" />
-  <title>Avatar with Mesh Background</title>
-  <style>
-    canvas {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-    }
+    <title>Avatar with Mesh Background</title>
+    <style>
+      canvas {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
 
-    .content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      color: white;
-      font-family: Arial, sans-serif;
-      padding-top: 40vh;
-      pointer-events: none;
-    }
+      .content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: white;
+        font-family: Arial, sans-serif;
+        padding-top: 40vh;
+        pointer-events: none;
+      }
 
-    .surprise-button {
-      position: relative;
-      z-index: 2;
-    }
+      .surprise-button {
+        position: relative;
+        z-index: 2;
+      }
 
-    .avatar-section {
-      z-index: 2;
-    }
-  </style>
-</head>
+      .avatar-section {
+        z-index: 2;
+      }
+    </style>
+  </head>
 
-<body>
-  <div class="scroll-container">
-    <div class="section">
-      <div class="social-icons">
-    <button class="icon icon-fill surprise-button">
-      <i class="fas fa-envelope"></i>
-    </button>
-    <button class="icon icon-fill surprise-button">
-      <i class="fab fa-linkedin"></i>
-    </button>
-  </div>
-    <div class="avatar-section">
-      <div class="hair">
-        <div id="hair-blob-1" class="blob" style="--i: 0"></div>
-        <div id="hair-blob-2" class="blob" style="--i: 1"></div>
-        <div id="hair-blob-3" class="blob" style="--i: 2"></div>
-        <div id="hair-blob-4" class="blob" style="--i: 3"></div>
-        <div id="hair-blob-5" class="blob" style="--i: 4"></div>
-        <div id="hair-blob-6" class="blob" style="--i: 5"></div>
-        <div id="hair-blob-7" class="blob" style="--i: 6"></div>
-        <div id="hair-blob-8" class="blob" style="--i: 7"></div>
-        <div id="hair-blob-9" class="blob" style="--i: 8"></div>
-        <div id="hair-blob-10" class="blob" style="--i: 9"></div>
-        <div id="hair-blob-11" class="blob" style="--i: 10"></div>
-        <div id="hair-blob-12" class="blob" style="--i: 11"></div>
-        <div id="hair-blob-13" class="blob" style="--i: 12"></div>
-        <div id="hair-blob-14" class="blob" style="--i: 13"></div>
-        <div id="hair-blob-15" class="blob" style="--i: 14"></div>
-        <div id="hair-blob-16" class="blob" style="--i: 15"></div>
-        <div id="hair-blob-17" class="blob" style="--i: 16"></div>
-        <div id="hair-blob-18" class="blob" style="--i: 17"></div>
-        <div id="hair-blob-19" class="blob" style="--i: 18"></div>
-        <div id="hair-blob-20" class="blob" style="--i: 19"></div>
-        <div id="hair-blob-21" class="blob" style="--i: 20"></div>
-      </div>
-
-      <div class="face">
-        <div class="eye-glass">
-          <div class="eye-glass-left"></div>
-          <div class="rim"></div>
-          <div class="eye-glass-right"></div>
+  <body>
+      <div class="section">
+        <div class="social-icons">
+          <button class="icon icon-fill surprise-button">
+            <i class="fas fa-envelope"></i>
+          </button>
+          <button class="icon icon-fill surprise-button">
+            <i class="fab fa-linkedin"></i>
+          </button>
         </div>
-        <div class="eyelid-left">
-          <div class="eye eye-left"></div>
-        </div>
-        <div class="eyelid-right">
-          <div class="eye eye-right"></div>
-        </div>
-        <div class="mouth"></div>
-      </div>
-    </div>
-    <div class="about-me">
-      <h2>SDE - Full Stack Engineer</h2>
-      <p>
-        Centering Divs, Merging PRs on Friday to ruin my weekends<br />
-        Yes, I’m a Full Stack Engineer who likes to build, break, and fix
-        things.<br />
-        Also: I design stuff. I play harmonium. Let’s chat!
-        <br /><br />
-      </p>
-    </div>
-  </div>
-  <div class="section">
-    <div class="container">
-      <h1 class="section-title">My Projects</h1>
-      <p class="section-subtitle">Explore my latest work and creative endeavors. Hover over the images to see them come
-        to life!</p>
+        <div class="avatar-section">
+          <div class="hair">
+            <div id="hair-blob-1" class="blob" style="--i: 0"></div>
+            <div id="hair-blob-2" class="blob" style="--i: 1"></div>
+            <div id="hair-blob-3" class="blob" style="--i: 2"></div>
+            <div id="hair-blob-4" class="blob" style="--i: 3"></div>
+            <div id="hair-blob-5" class="blob" style="--i: 4"></div>
+            <div id="hair-blob-6" class="blob" style="--i: 5"></div>
+            <div id="hair-blob-7" class="blob" style="--i: 6"></div>
+            <div id="hair-blob-8" class="blob" style="--i: 7"></div>
+            <div id="hair-blob-9" class="blob" style="--i: 8"></div>
+            <div id="hair-blob-10" class="blob" style="--i: 9"></div>
+            <div id="hair-blob-11" class="blob" style="--i: 10"></div>
+            <div id="hair-blob-12" class="blob" style="--i: 11"></div>
+            <div id="hair-blob-13" class="blob" style="--i: 12"></div>
+            <div id="hair-blob-14" class="blob" style="--i: 13"></div>
+            <div id="hair-blob-15" class="blob" style="--i: 14"></div>
+            <div id="hair-blob-16" class="blob" style="--i: 15"></div>
+            <div id="hair-blob-17" class="blob" style="--i: 16"></div>
+            <div id="hair-blob-18" class="blob" style="--i: 17"></div>
+            <div id="hair-blob-19" class="blob" style="--i: 18"></div>
+            <div id="hair-blob-20" class="blob" style="--i: 19"></div>
+            <div id="hair-blob-21" class="blob" style="--i: 20"></div>
+          </div>
 
-      <div class="projects-grid">
-        <!-- Project Card 1 -->
-        <div class="project-card">
-          <div class="image-container" onclick="toggleImage(this)">
-            <img src="assets/mightysolutions.png" alt="E-Commerce Project" class="project-image"
-              data-static="assets/mightysolutions.png" data-gif="assets/gif/mightysolutions.gif">
-            <div class="play-indicator">
-              <div class="play-icon"></div>
+          <div class="face">
+            <div class="eye-glass">
+              <div class="eye-glass-left"></div>
+              <div class="rim"></div>
+              <div class="eye-glass-right"></div>
             </div>
-          </div>
-          <h3 class="project-title">E-Commerce Platform</h3>
-          <p class="project-description">A full-stack e-commerce solution with user authentication, payment integration,
-            and admin dashboard. Features include product catalog, shopping cart, and order management.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">MongoDB</span>
-            <span class="tech-tag">Stripe</span>
-            <span class="tech-tag">Express</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link btn-primary">Live Demo</a>
-            <a href="#" class="project-link btn-secondary">GitHub</a>
+            <div class="eyelid-left">
+              <div class="eye eye-left"></div>
+            </div>
+            <div class="eyelid-right">
+              <div class="eye eye-right"></div>
+            </div>
+            <div class="mouth"></div>
           </div>
         </div>
-
-        <!-- Project Card 2 -->
-        <div class="project-card">
-          <div class="image-container" onclick="toggleImage(this)">
-            <img src="assets/crossword.png" alt="Weather App Project" class="project-image"
-              data-static="assets/crossword.png" data-gif="assets/gif/crossword.gif">
-            <div class="play-indicator">
-              <div class="play-icon"></div>
-            </div>
-          </div>
-          <h3 class="project-title">Weather Dashboard</h3>
-          <p class="project-description">A responsive weather application with location-based forecasts, interactive
-            maps, and weather alerts. Includes 7-day forecasts and weather history.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">Vue.js</span>
-            <span class="tech-tag">OpenWeather API</span>
-            <span class="tech-tag">Chart.js</span>
-            <span class="tech-tag">PWA</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link btn-primary">Live Demo</a>
-            <a href="#" class="project-link btn-secondary">GitHub</a>
-          </div>
+        <div class="about-me">
+          <h2>SDE - Full Stack Engineer</h2>
+          <p>
+            Centering Divs, Merging PRs on Friday to ruin my weekends<br />
+            Yes, I’m a Full Stack Engineer who likes to build, break, and fix
+            things.<br />
+            Also: I design stuff. I play harmonium. Let’s chat!
+            <br /><br />
+          </p>
+        </div>
+      </div>
+      <div class="section">
+        <h1 class="section-title">Project Highlights</h1>
+        <div class="card-container" id="cardContainer">
+            <!-- Cards will be dynamically generated -->
         </div>
 
-        <!-- Project Card 3 -->
-        <div class="project-card">
-          <div class="image-container" onclick="toggleImage(this)">
-            <img src="https://via.placeholder.com/350x200/45b7d1/ffffff?text=Task+Manager" alt="Task Manager Project"
-              class="project-image" data-static="https://via.placeholder.com/350x200/45b7d1/ffffff?text=Task+Manager"
-              data-gif="https://via.placeholder.com/350x200/96c93d/ffffff?text=Task+Flow">
-            <div class="play-indicator">
-              <div class="play-icon"></div>
-            </div>
-          </div>
-          <h3 class="project-title">Task Management System</h3>
-          <p class="project-description">A collaborative task management tool with real-time updates, team collaboration
-            features, and progress tracking. Includes Kanban boards and time tracking.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">Angular</span>
-            <span class="tech-tag">Firebase</span>
-            <span class="tech-tag">TypeScript</span>
-            <span class="tech-tag">Socket.io</span>
-            <span class="tech-tag">Material UI</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link btn-primary">Live Demo</a>
-            <a href="#" class="project-link btn-secondary">GitHub</a>
-          </div>
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn">↑ Previous</button>
+            <button class="nav-btn" id="nextBtn">Next ↓</button>
         </div>
 
-        <!-- Project Card 4 -->
-        <div class="project-card">
-          <div class="image-container" onclick="toggleImage(this)">
-            <img src="https://via.placeholder.com/350x200/f093fb/ffffff?text=Portfolio+Site" alt="Portfolio Project"
-              class="project-image" data-static="https://via.placeholder.com/350x200/f093fb/ffffff?text=Portfolio+Site"
-              data-gif="https://via.placeholder.com/350x200/f5576c/ffffff?text=Interactive+Portfolio">
-            <div class="play-indicator">
-              <div class="play-icon"></div>
-            </div>
-          </div>
-          <h3 class="project-title">Interactive Portfolio</h3>
-          <p class="project-description">A modern, responsive portfolio website with smooth animations, dark mode
-            toggle, and interactive elements. Features project showcases and contact forms.</p>
-          <div class="tech-stack">
-            <span class="tech-tag">Next.js</span>
-            <span class="tech-tag">Tailwind CSS</span>
-            <span class="tech-tag">Framer Motion</span>
-            <span class="tech-tag">Vercel</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="project-link btn-primary">Live Demo</a>
-            <a href="#" class="project-link btn-secondary">GitHub</a>
-          </div>
+        <div class="indicators" id="indicators">
+            <!-- Indicators will be dynamically generated -->
+        </div>
       </div>
-      </div>
-      </div>
-  </div>
-  </div>
+      <div class="section">
+        <h1 class="section-title">Work Experience</h1>
+        <div class="container">
+          <div class="timeline">
+              <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                      <h3 class="company-name">DeepForrest AI</h3>
+                      <p class="job-title">Senior Machine Learning Engineer</p>
+                      <p class="duration">Jan 2023 - Present</p>
+                      <p class="description">Leading AI research initiatives and developing cutting-edge machine learning models for forest conservation and environmental monitoring.</p>
+                      <div class="skills">
+                          <span class="skill-tag">Python</span>
+                          <span class="skill-tag">TensorFlow</span>
+                          <span class="skill-tag">Computer Vision</span>
+                          <span class="skill-tag">AWS</span>
+                      </div>
+                  </div>
+              </div>
   
-</body>
-<script src="script.js"></script>
+              <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-content">
+                      <h3 class="company-name">Cloud4C</h3>
+                      <p class="job-title">Cloud Solutions Architect</p>
+                      <p class="duration">Mar 2021 - Dec 2022</p>
+                      <p class="description">Designed and implemented scalable cloud infrastructure solutions for enterprise clients, focusing on digital transformation initiatives.</p>
+                      <div class="skills">
+                          <span class="skill-tag">Azure</span>
+                          <span class="skill-tag">AWS</span>
+                          <span class="skill-tag">Kubernetes</span>
+                          <span class="skill-tag">DevOps</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="section">
+        <h1 class="section-title">Skills</h1>
+      </div>
+      <div class="section">
+        <h1 class="section-title">Achievement</h1>
+        <div class="achievements">
+          <div class="cartoon">
+            <img src="assets/achievement.png" alt="">
+          </div>
+          <div class="achievement-content">
+            <p>AIR 174 in IICC coding competition</p>
+            <p>Expert in codeforces</p>
+            <p>4 Stars on codechef</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+  <script src="projectScroll.js"></script>
 </html>
