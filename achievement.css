@@ -6,3 +6,9 @@
     justify-content: space-evenly;
     flex-direction: row;
 }
+
+.achievements p {
+    font-size: larger;
+    font-weight: 500;
+    padding: 1rem;
+}

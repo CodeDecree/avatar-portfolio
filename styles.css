@@ -11,12 +11,18 @@ body {
   background-attachment: scroll;  /* or fixed, if you want parallax feel */
   background-color: #F4EFCC;      /* your base background color */
   font-family: "Poppins", "Segoe UI", "Helvetica Neue", sans-serif;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
   overflow-x: hidden;
   overflow-y: scroll;
   
 }
-html {
+html, body {
+  height: 100%;
+  margin: 0;
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }
 
     .scroll-container {
@@ -385,7 +391,7 @@ html {
 
 .about-me h2 {
   font-size: 2.5rem;
-  color: #3f3d56;
+  color: #000000;
   margin-bottom: 1rem;
   font-weight: 600;
 }
@@ -394,15 +400,16 @@ html {
   font-size: 1.1rem;
   font-weight: 600;
   line-height: 1.6;
-  color: #555;
+  color: #000000;
 }
 
 
 .section {
   max-height: fit-content;
   min-height: 100vh;
-  /* scroll-snap-align: start; */
+  scroll-snap-align: start;
   display: flex;  
+  position: relative;
   align-items: center; 
   flex-direction: column;
    justify-content: center; 
@@ -411,5 +418,20 @@ html {
 }
 
 .section-title {
-  padding-top: 1rem;
+  padding-top: 0.5rem;
 }
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+body {
+  scrollbar-width: none;
+}
+
+/* General fallback */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+}
+

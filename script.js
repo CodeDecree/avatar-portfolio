@@ -223,3 +223,9 @@ style.textContent = `
             }
         `;
 document.head.appendChild(style);
+
+document.querySelectorAll('.skill-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('active');
+  });
+});
