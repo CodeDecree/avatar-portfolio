@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="circleAnimation.css" />
     <link rel="stylesheet" href="projectDiv.css" />
-    <link rel="stylesheet" href="workExperience.css" />
     <link rel="stylesheet" href="achievement.css" />
     <link rel="stylesheet" href="skills.css" />
     <link
@@ -13,7 +13,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
       crossorigin="anonymous"
     />
-
     <title>Avatar with Mesh Background</title>
     <style>
       canvas {
@@ -46,14 +45,52 @@
   </head>
 
   <body>
-    <div class="section">
-      <div class="social-icons">
-        <button class="icon icon-fill surprise-button">
-          <i class="fas fa-envelope"></i>
-        </button>
-        <button class="icon icon-fill surprise-button">
-          <i class="fab fa-linkedin"></i>
-        </button>
+    <div class="dropdown">
+  <div class="dropdown-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  <div class="dropdown-menu">
+    <a href="#">
+      <div class="icon-circle"><i class="fas fa-home"></i></div>
+    </a>
+    <a href="#">
+      <div class="icon-circle"><i class="fas fa-briefcase"></i></div>
+    </a>
+    <a href="#">
+      <div class="icon-circle"><i class="fas fa-user"></i></div>
+    </a>
+  </div>
+</div>
+    <div class="section home-section">
+      <div class="shelf-1">
+        <img id="work" src="./assets/game-icons_bookshelf.svg" alt="" />
+        <div class="stand"></div>
+      </div>
+      <div class="shelf-2">
+        <div class="row-icons">
+          <a href="">
+            <img src="./assets/openmoji_linkedin.svg" alt="" />
+          </a>
+          <a href="">
+            <img src="./assets/email.png" alt="" />
+          </a>
+          <a href="">
+            <img src="./assets/github (1).png" alt="" />
+          </a>
+        </div>
+        <div class="stand"></div>
+      </div>
+      <div class="shelf-3">
+        <div class="watch-container">
+          <div class="watch">00:00</div>
+          <div class="watch-back"></div>
+
+        </div>
+        <div class="stand"></div>
+      </div>
+
+      <div class="wallpaper-container">
+        <div class="swe-text">SOFTWARE<br />ENGINEER</div>
       </div>
       <div class="avatar-section">
         <div class="hair">
@@ -95,79 +132,105 @@
           <div class="mouth"></div>
         </div>
       </div>
-      <div class="about-me">
-        <h2>SDE - Full Stack Engineer</h2>
-        <p>
-          Centering Divs, Merging PRs on Friday to ruin my weekends<br />
-          Yes, I’m a Full Stack Engineer who likes to build, break, and fix
-          things.<br />
-          Also: I design stuff. I play harmonium. Let’s chat!
-          <br /><br />
-        </p>
-      </div>
     </div>
-        <div class="section">
-      <h1 class="section-title">Project Highlights</h1>
-      </div>
-    <!-- <div class="section">
-      <h1 class="section-title">Project Highlights</h1>
-      <div class="card-container" id="cardContainer">
-      </div>
-
-      <div class="navigation">
-        <button class="nav-btn" id="prevBtn">↑ Previous</button>
-        <button class="nav-btn" id="nextBtn">Next ↓</button>
-      </div>
-
-      <div class="indicators" id="indicators">
-      </div>
-    </div> -->
-    <div class="section">
-      <h1 class="section-title">Work Experience</h1>
-      <div class="container">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3 class="company-name">DeepForrest AI</h3>
-              <p class="job-title">Senior Machine Learning Engineer</p>
-              <p class="duration">Jan 2023 - Present</p>
-              <p class="description">
-                Leading AI research initiatives and developing cutting-edge
-                machine learning models for forest conservation and
-                environmental monitoring.
-              </p>
-              <div class="skills">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">TensorFlow</span>
-                <span class="skill-tag">Computer Vision</span>
-                <span class="skill-tag">AWS</span>
-              </div>
-            </div>
+    <div class="section work-section">
+      <div class="video-grid">
+        <!-- Column 1 -->
+        <div class="column">
+          <div class="video-box">
+            <video
+              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
           </div>
+          <div class="video-box">
+            <video
+              src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+          </div>
+          <div class="video-box">
+            <video
+              src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+          </div>
+        </div>
 
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3 class="company-name">Cloud4C</h3>
-              <p class="job-title">Cloud Solutions Architect</p>
-              <p class="duration">Mar 2021 - Dec 2022</p>
-              <p class="description">
-                Designed and implemented scalable cloud infrastructure solutions
-                for enterprise clients, focusing on digital transformation
-                initiatives.
-              </p>
-              <div class="skills">
-                <span class="skill-tag">Azure</span>
-                <span class="skill-tag">AWS</span>
-                <span class="skill-tag">Kubernetes</span>
-                <span class="skill-tag">DevOps</span>
-              </div>
-            </div>
+        <!-- Column 2 (taller) -->
+        <div class="column tall">
+          <div class="video-box">
+            <video
+              src="https://www.w3schools.com/html/movie.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+          </div>
+          <div class="video-box">
+            <video
+              src="https://samplelib.com/lib/preview/mp4/sample-10s.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+          </div>
+          <div class="video-box">
+            <video
+              src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="column">
+          <div class="video-box">
+            <video
+              src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+          </div>
+          <div class="video-box">
+            <video
+              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
+          </div>
+          <div class="video-box">
+            <video
+              src="https://www.w3schools.com/html/movie.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+            ></video>
           </div>
         </div>
       </div>
     </div>
+
+
     <div class="section">
       <h1 class="section-title">Skills</h1>
       <section class="skills-section">
@@ -263,7 +326,10 @@
         </div>
       </div>
     </div>
+  <div class="circle pink"></div>
+  <div class="circle white"></div>
   </body>
+  <script src="work.js"></script>
   <script src="script.js"></script>
-  <script src="projectScroll.js"></script>
+  <script src="clock.js"></script>
 </html>

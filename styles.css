@@ -1,37 +1,93 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://www.1001fonts.com/digital-7-font.html");
 
 body {
   margin: 0;
   padding: 0;
-    background-image: 
+  /* background-image: 
     linear-gradient(rgba(244, 239, 204, 0.92), rgba(244, 239, 204, 0.92)), 
-    url('./assets/doodle.jpg');
-  background-size: 100% auto;     /* full width, auto height */
-  background-repeat: repeat-y;    /* repeat vertically */
-  background-attachment: scroll;  /* or fixed, if you want parallax feel */
-  background-color: #F4EFCC;      /* your base background color */
+    url('./assets/doodle.jpg'); */
+  background-size: 100% auto; /* full width, auto height */
+  background-repeat: repeat-y; /* repeat vertically */
+  background-attachment: scroll; /* or fixed, if you want parallax feel */
+  background-color: #f4efcc; /* your base background color */
   font-family: "Poppins", "Segoe UI", "Helvetica Neue", sans-serif;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  overflow-y: scroll;
-  
+  overflow-y: hidden;
 }
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
-    .scroll-container {
-      height: 100vh;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-    }
+@font-face {
+  font-family: 'DigitalClock';
+  src: url('./assets/fonts/DS-DIGIB.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
+.shelf-1 {
+  position: absolute;
+  top: 10rem;
+  left: 10rem;
+  display: flex;
+  flex-direction: column;
+}
+.shelf-1 img {
+  height: 8rem;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  top: 8px;
+  cursor: pointer;
+}
+.shelf-2 img {
+  height: 4rem;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  top: 8px;
+  cursor: pointer;
+}
+a {
+  cursor: pointer;
+}
+.shelf-2 {
+  position: absolute;
+  top: 24rem;
+  left: 7rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.shelf-3 {
+  position: absolute;
+  top: 16rem;
+  right: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.stand {
+  width: 10rem;
+  height: 1.2rem;
+  border-radius: 6px;
+  box-shadow: inset -8px -5px 0 rgba(0, 0, 0, 0.3);
+    border: solid black 3px;
+  background-color: #ac7333;
+  z-index: 3;
+}
+.shelf-2 .stand {
+  width: 16rem;
+}
 
 .hair {
   width: 200px;
@@ -50,6 +106,27 @@ html, body {
   animation-delay: calc(var(--i) * 0.2s);
   opacity: 0.95; /* optional for layering effect */
   z-index: 99;
+}
+
+.wallpaper-container {
+  position: relative;
+  top: -5rem;
+  /* height: 40vh; */
+}
+
+.swe-text {
+  font-family: "Anton", sans-serif;
+  font-size: 12.25vw;
+  padding: 0;
+  margin: auto auto 0;
+  display: inline-block;
+  font-weight: 500;
+  color: #948c4f8d;
+  cursor: pointer;
+  pointer-events: none;
+  line-height: 1;
+  letter-spacing: 0px;
+  text-align: center;
 }
 
 /* Positioning each blob to simulate messy hair */
@@ -155,102 +232,147 @@ html, body {
   height: 100vh;
   width: 100vw;
 }
-
 .avatar-section {
-  position: relative;
+  position: absolute;
   height: 40vh;
   width: 50vw;
+  top: 55vh;
   /* left: 25%; */
   background-color: transparent;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.social-icons {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  top: 2rem;
-  left: 1rem;
-  gap: 1rem;
-  padding: 3px;
-}
 .face {
   position: relative;
   background-color: bisque;
-  height: 149px;
-  width: 131px;
-  border: 4px solid black;
-  border-bottom-right-radius: 70px;
-  border-bottom-left-radius: 70px;
-  top: -50px;
-  left: -10px;
+  height: 9.3125rem;
+  width: 8.1875rem;
+  border: 0.25rem solid black;
+    box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.2);
+
+  border-bottom-right-radius: 4.375rem;
+  border-bottom-left-radius: 4.375rem;
+  top: -3.125rem;
+  left: -0.625rem;
 }
+
 .eyelid-left {
   position: absolute;
-  border: 3px solid #000000;
-  width: 43px;
-  top: 70px;
+  border: 0.1875rem solid #000000;
+  width: 2.6875rem;
+  top: 4.375rem;
   display: flex;
   justify-content: center;
-  left: 6px;
+  left: 0.375rem;
 }
+
 .eyelid-right {
   position: absolute;
-  border: 3px solid black;
-  width: 43px;
-  top: 70px;
+  border: 0.1875rem solid black;
+  width: 2.6875rem;
+  top: 4.375rem;
   display: flex;
   justify-content: center;
-  right: 6px;
+  right: 0.375rem;
 }
+
 .eye {
   position: absolute;
   background-color: black;
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
 }
+
 .mouth {
   position: absolute;
-  border: 3px solid black;
-  width: 46px;
-  bottom: 30px;
-  left: 40px;
+  border: 0.1875rem solid black;
+  width: 2.875rem;
+  bottom: 1.875rem;
+  left: 2.5rem;
 }
+
+/* .books {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-direction: row;
+  position: relative;
+  top: 2px;
+  z-index: -99;
+} */
+
+/* .resume {
+  width: 2rem;
+  height: 5rem;
+  background-color: #b26492;
+  border: solid black 2px;
+  border-right: none;
+    box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.2);
+
+}
+.about-me {
+  width: 2rem;
+  height: 8rem;
+  background-color: #ac7333;
+  border: solid black 2px;
+    box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.2);
+
+}
+.skills {
+    width: 2rem;
+  height: 5rem;
+  background-color: #b26492;
+  border: solid black 2px;
+    box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.2);
+
+  border-left: none;
+} */
+
+
+
 .eye-glass {
   position: absolute;
   width: 100%;
-  top: 50px;
+  
+  top: 3.125rem;
   display: flex;
 }
+
 .eye-glass-left {
   position: relative;
-  border: 4px solid black;
-  width: 60px;
+  border: 0.25rem solid black;
+  width: 3.75rem;
+    box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.2);
+
   background-color: burlywood;
-  height: 45px;
+  height: 2.8125rem;
   border-radius: 30%;
-  left: 0px;
+  left: 0rem;
 }
+
 .eye-glass-right {
   position: relative;
-  border: 4px solid black;
-  width: 60px;
-  height: 45px;
+  border: 0.25rem solid black;
+    box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.2);
+
+  width: 3.75rem;
+  height: 2.8125rem;
   background-color: burlywood;
   border-radius: 30%;
-  right: 0px;
+  right: 0rem;
 }
+
 .rim {
   position: relative;
   background-color: black;
-  width: 10px;
-  height: 4px;
-  top: 12px;
+  width: 0.625rem;
+  height: 0.25rem;
+  top: 0.75rem;
 }
 .surprise-button {
   position: relative;
@@ -379,15 +501,7 @@ html, body {
 }
 
 /*# sourceMappingURL=buttons.css.map */
-.about-me {
-  font-family: inherit;
-  background: transparent;
-  padding: 0;
-  border-radius: 16px;
-  max-width: fit-content;
-  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); */
-  text-align: center;
-}
+
 
 .about-me h2 {
   font-size: 2.5rem;
@@ -403,18 +517,26 @@ html, body {
   color: #000000;
 }
 
+.row-icons {
+  display: flex;
+  flex: row;
+  justify-content: space-around;
+  position: relative;
+  top: 8px;
+  z-index: 2;
+}
 
 .section {
   max-height: fit-content;
   min-height: 100vh;
   scroll-snap-align: start;
-  display: flex;  
+  display: flex;
   position: relative;
-  align-items: center; 
+  align-items: center;
   flex-direction: column;
-   justify-content: center; 
+  justify-content: center;
 
-   /* font-size: 3rem; */
+  /* font-size: 3rem; */
 }
 
 .section-title {
@@ -434,4 +556,100 @@ body {
 body {
   -ms-overflow-style: none; /* IE and Edge */
 }
+.watch-container {
+  display: flex;
+  flex-direction: row;
+}
+.watch {
+    font-family: 'DigitalClock', sans-serif;
+  border: solid rgb(61, 61, 61) 0.3rem;
+  border-bottom-left-radius: 0.7rem;
+  border-top-left-radius: 0.7rem;
+    box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.2);
+  width: 5rem;
+  background-color: #0000005b;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:xx-large;
+}
+.watch-back {
+  border: solid rgb(61, 61, 61) 0.3rem;
+  border-bottom-right-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
+  width: 0.5rem;
+  background-color: #000000bb;
+  height: 2.5rem;
+}
 
+.hide {
+  display: none;
+}
+
+   .dropdown {
+      position: absolute;
+      display: inline-block;
+      top: 3rem;
+      right: 3rem;
+      z-index: 2;
+    }
+
+    .dropdown-toggle {
+      background-color: white;
+      color: black;
+      padding: 1rem;
+      width: 2rem;
+      height: 2rem;
+      box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      flex-direction: column;
+            box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.2);
+       border-radius: 1rem;
+      z-index: 999;
+    }
+
+    .dropdown-menu a {
+      text-decoration: none;
+      padding: 1rem 1rem;
+      color: #333;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+     
+      transition: background 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #f0f0f0;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: flex;
+    }
+
+    .icon-circle {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: #333;
+      
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }

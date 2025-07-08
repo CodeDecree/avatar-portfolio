@@ -229,3 +229,35 @@ document.querySelectorAll('.skill-card').forEach(card => {
     card.classList.toggle('active');
   });
 });
+
+document.getElementById('work').addEventListener('click',() => {
+    document.querySelector('.pink').classList.remove('expand');
+    document.querySelector('.white').classList.remove('expand');
+    document.querySelector('.pink').classList.add('expand');
+
+  setTimeout(() => {
+    document.querySelector('.white').classList.add('expand');
+  }, 350);
+
+  setTimeout(() => {
+        document.querySelector('.pink').classList.remove('expand');
+    document.querySelector('.white').classList.remove('expand');
+    document.querySelector('.home-section').style.display = 'none';
+
+    const boxes = document.querySelectorAll('.work-section .video-box');
+  boxes.forEach((box, index) => {
+    setTimeout(() => {
+      box.classList.add('visible');
+    }, 100 * index); // stagger each one by 150ms
+  });
+  }, 1200);
+
+})
+
+function goHome() {
+  // Hide work-section and reset video boxes
+document.querySelector('.work-section').style.display = 'none';
+document.querySelectorAll('.work-section .video-box').forEach(box => {
+  box.classList.remove('visible');
+});
+}

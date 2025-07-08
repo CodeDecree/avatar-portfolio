@@ -1,28 +1,28 @@
-document.addEventListener('DOMContentLoaded', function() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            
-            // Add click event to timeline items for mobile interaction
-            timelineItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    this.style.transform = 'scale(1.02)';
-                    setTimeout(() => {
-                        this.style.transform = 'scale(1)';
-                    }, 200);
-                });
-            });
 
-            // Intersection Observer for scroll animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
+  document.addEventListener('DOMContentLoaded', () => {
+    const videoBoxes = document.querySelectorAll('.video-box');
 
-            timelineItems.forEach(item => {
-                observer.observe(item);
-            });
+    videoBoxes.forEach((box) => {
+      box.addEventListener('mouseenter', () => {
+        videoBoxes.forEach(otherBox => {
+          if (otherBox !== box) {
+            otherBox.style.filter = 'brightness(0.4)'
+          } else {
+            otherBox.style.opacity = '1';   
+            otherBox.style.filter = 'brightness(1)'
+            otherBox.style.transform = 'scale(1.02)';
+            otherBox.style.zIndex = '2';
+          }
         });
+      });
+
+      box.addEventListener('mouseleave', () => {
+        videoBoxes.forEach(otherBox => {
+          otherBox.style.opacity = '1';
+          otherBox.style.transform = 'scale(1)';
+            otherBox.style.filter = 'brightness(1)'
+          otherBox.style.zIndex = '1';
+        });
+      });
+    });
+  });
