@@ -15,14 +15,6 @@
     />
     <title>Avatar with Mesh Background</title>
     <style>
-      canvas {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
-      }
-
       .content {
         position: relative;
         z-index: 1;
@@ -33,11 +25,6 @@
         pointer-events: none;
       }
 
-      .surprise-button {
-        position: relative;
-        z-index: 2;
-      }
-
       .avatar-section {
         z-index: 2;
       }
@@ -46,35 +33,54 @@
 
   <body>
     <div class="dropdown">
-  <div class="dropdown-toggle">
-    <i class="fas fa-bars"></i>
-  </div>
-  <div class="dropdown-menu">
-    <a href="#">
-      <div class="icon-circle"><i class="fas fa-home"></i></div>
-    </a>
-    <a href="#">
-      <div class="icon-circle"><i class="fas fa-briefcase"></i></div>
-    </a>
-    <a href="#">
-      <div class="icon-circle"><i class="fas fa-user"></i></div>
-    </a>
-  </div>
-</div>
-    <div class="section home-section">
+      <div class="dropdown-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="dropdown-menu">
+        <a id="home-button" href="#">
+          <div class="icon-circle"><i class="fas fa-home"></i></div>
+        </a>
+        <a id="work-button" href="#">
+          <div class="icon-circle"><i class="fas fa-briefcase"></i></div>
+        </a>
+        <a  id="about-button" href="#">
+          <div class="icon-circle"><i class="fas fa-user"></i></div>
+        </a>
+      </div>
+    </div>
+    <div id="home-section" class="section home-section">
       <div class="shelf-1">
-        <img id="work" src="./assets/game-icons_bookshelf.svg" alt="" />
+        <img
+          class="surprise-button"
+          id="work"
+          src="./assets/work-svgrepo-com.svg"
+          alt=""
+        />
         <div class="stand"></div>
       </div>
       <div class="shelf-2">
         <div class="row-icons">
-          <a href="">
+          <a
+            class="surprise-button"
+            href="https://www.linkedin.com/in/vinay-kalura"
+            target="_blank"
+          >
             <img src="./assets/openmoji_linkedin.svg" alt="" />
           </a>
-          <a href="">
-            <img src="./assets/email.png" alt="" />
+          <a
+            class="surprise-button"
+            href="https://mail.google.com/mail/?view=cm&to=vinaykaluraggb@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="./assets/email.png" alt="Email me" />
           </a>
-          <a href="">
+
+          <a
+            class="surprise-button"
+            href="https://github.com/CodeDecree"
+            target="_blank"
+          >
             <img src="./assets/github (1).png" alt="" />
           </a>
         </div>
@@ -84,7 +90,6 @@
         <div class="watch-container">
           <div class="watch">00:00</div>
           <div class="watch-back"></div>
-
         </div>
         <div class="stand"></div>
       </div>
@@ -133,13 +138,13 @@
         </div>
       </div>
     </div>
-    <div class="section work-section">
+    <div id="work-section" class="section work-section hide">
       <div class="video-grid">
         <!-- Column 1 -->
         <div class="column">
           <div class="video-box">
             <video
-              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              src="assets/videos/expense-tracker.mp4"
               autoplay
               muted
               loop
@@ -148,7 +153,7 @@
           </div>
           <div class="video-box">
             <video
-              src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+              src="assets/videos/mighty-solutions.mp4"
               autoplay
               muted
               loop
@@ -157,7 +162,7 @@
           </div>
           <div class="video-box">
             <video
-              src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+              src="assets/videos/bothigh.mp4"
               autoplay
               muted
               loop
@@ -170,7 +175,7 @@
         <div class="column tall">
           <div class="video-box">
             <video
-              src="https://www.w3schools.com/html/movie.mp4"
+              src="assets/videos/literature-assistant.mp4"
               autoplay
               muted
               loop
@@ -179,7 +184,7 @@
           </div>
           <div class="video-box">
             <video
-              src="https://samplelib.com/lib/preview/mp4/sample-10s.mp4"
+              src="assets/videos/crossword.mp4"
               autoplay
               muted
               loop
@@ -188,7 +193,7 @@
           </div>
           <div class="video-box">
             <video
-              src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+              src="assets/videos/linkedin-posting.mp4"
               autoplay
               muted
               loop
@@ -201,7 +206,7 @@
         <div class="column">
           <div class="video-box">
             <video
-              src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+              src="assets/videos/image-gallery.mp4"
               autoplay
               muted
               loop
@@ -210,7 +215,7 @@
           </div>
           <div class="video-box">
             <video
-              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              src="assets/videos/switchhigh.mp4"
               autoplay
               muted
               loop
@@ -219,7 +224,7 @@
           </div>
           <div class="video-box">
             <video
-              src="https://www.w3schools.com/html/movie.mp4"
+              src="assets/videos/pastel-palette.mp4"
               autoplay
               muted
               loop
@@ -229,9 +234,47 @@
         </div>
       </div>
     </div>
+    <div class="info-banner">
+      <div class="left-stick"></div>
+      <div class="white-board"></div>
+      <div class="right-stick"></div>
+    </div>
+    <div class="about-me hide">
+      <div class="about-header hide">
+        <div class="header-wrapper">
+          <div class="profile-circle"></div>
+          <h1>About Me</h1>
+        </div>
+        <div class="about-line"></div>
+      </div>
+      <div class="about-content hide">
+        <p>
+          I'm a full-stack sorcerer fluent in MERN spells, Docker incantations,
+          and DevOps rituals. Whether it's building intelligent bots with Rasa
+          or wrangling databases with Prisma, I know how to speak the language
+          of both humans and machines (although machines tend to listen more).
+          I've deployed LLM-powered apps, automated boring stuff with RPA, and
+          trained models that could probably beat me in chess—thankfully, they
+          can't go on treks.
+        </p>
 
+        <p>
+          When I'm not debugging the universe, I like hitting the mountains for
+          a good trek, challenging friends to a game of chess (where I still
+          lose occasionally and blame latency), or getting emotionally attached
+          to cricket matches. The harmonium is my analog escape—an instrument
+          that doesn’t crash unless *I* do.
+        </p>
 
-    <div class="section">
+        <p>
+          So whether it's shipping scalable software or figuring out the next
+          chord progression on my harmonium, I love solving problems creatively.
+          If you’re into clean code, mountain air, or conversations about why
+          white pawns never get a promotion, we’ll get along just fine.
+        </p>
+      </div>
+    </div>
+    <div class="section hide">
       <h1 class="section-title">Skills</h1>
       <section class="skills-section">
         <div class="skills-grid">
@@ -310,7 +353,7 @@
         </div>
       </section>
     </div>
-    <div class="section">
+    <div class="section hide">
       <h1 class="section-title">Achievements</h1>
       <div class="achievements">
         <div class="cartoon">
@@ -326,8 +369,8 @@
         </div>
       </div>
     </div>
-  <div class="circle pink"></div>
-  <div class="circle white"></div>
+    <div class="circle pink"></div>
+    <div class="circle white"></div>
   </body>
   <script src="work.js"></script>
   <script src="script.js"></script>

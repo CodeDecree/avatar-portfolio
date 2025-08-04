@@ -5,8 +5,6 @@ function updateClock() {
   const timeStr = `${hrs}:${mins}`;
 
   const el = document.querySelector('.watch');
-  console.log(timeStr);
-  console.log(el.textContent)
   if (el) el.textContent = timeStr;
 }
 

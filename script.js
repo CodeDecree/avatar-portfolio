@@ -1,11 +1,107 @@
+function infoBanner(content = "Default message") {
+  if (currentBanner) {
+    hideBanner();
+    showNew(content);
+  } else {
+    showNew(content);
+  }
+}
+
+function showNew(content) {
+  const banner = document.createElement("div");
+  banner.className = "info-banner";
+  banner.innerHTML = `
+                <div class="left-stick"></div>
+                <div class="white-board">
+                    ${content}
+                </div>
+                <div class="right-stick"></div>
+            `;
+  document.body.appendChild(banner);
+  currentBanner = banner;
+
+  setTimeout(() => {
+    banner.classList.add("bounce-in");
+  }, 10);
+}
+
+function hideBanner() {
+  if (currentBanner) {
+    currentBanner.classList.remove("bounce-in");
+    currentBanner.classList.add("bounce-out");
+  }
+}
+
 // Track button hover state
 let isHoveringButton = false;
 
 const surpriseButtons = document.querySelectorAll(".surprise-button");
+const face = document.querySelector(".face");
 const eyes = document.querySelectorAll(".eye");
 const mouth = document.querySelector(".mouth");
 const eyelidLeft = document.querySelector(".eyelid-left");
 const eyelidRight = document.querySelector(".eyelid-right");
+const about_content = document.querySelector(".about-content");
+const about_section = document.querySelector(".about-me");
+const about_header = document.querySelector(".about-header");
+
+face.addEventListener("click", () => {
+  animation();
+  setTimeout(() => {
+    document.getElementById("home-section").classList.add("hide");
+    about_section.classList.remove("hide");
+    about_content.classList.remove("hide");
+    about_header.classList.remove("hide");
+    triggerAboutMeAnimation();
+  }, 2000);
+});
+
+const surpriseDescriptions = {
+  work: "You wanna see my WORK?!",
+  linkedin: "YOU A RECRUITER 🤩?!!",
+  email: "Shoot me an Email!",
+  github: "Sure, you can have a look at my dead projects.",
+};
+
+document.querySelectorAll(".surprise-button").forEach((button) => {
+  // Determine which button we're dealing with
+  let id = button.id || "";
+
+  // If the button is inside an <a>, use the image filename to infer purpose
+  if (!id && button.querySelector("img")) {
+    const src = button.querySelector("img").getAttribute("src");
+    if (src.includes("linkedin")) id = "linkedin";
+    else if (src.includes("email")) id = "email";
+    else if (src.includes("github")) id = "github";
+  } else if (!id && button.tagName === "IMG") {
+    const src = button.getAttribute("src");
+    if (src.includes("linkedin")) id = "linkedin";
+    else if (src.includes("email")) id = "email";
+    else if (src.includes("github")) id = "github";
+  }
+
+  const message = surpriseDescriptions[id];
+
+  if (message) {
+    button.addEventListener("mouseenter", () => {
+      infoBanner(message);
+    });
+
+    button.addEventListener("mouseleave", () => {
+      hideBanner();
+    });
+  }
+});
+
+face.addEventListener("mouseenter", () => {
+  mouth.style.width = "20px";
+  infoBanner("About Me??");
+});
+
+face.addEventListener("mouseleave", () => {
+  mouth.style.width = "46px";
+  hideBanner();
+});
 
 surpriseButtons.forEach((surpriseButton) =>
   surpriseButton.addEventListener("mouseenter", () => {
@@ -208,7 +304,6 @@ document.querySelectorAll(".project-link").forEach((button) => {
   });
 });
 
-// Add CSS for ripple animation
 const style = document.createElement("style");
 style.textContent = `
             @keyframes ripple {
@@ -224,40 +319,107 @@ style.textContent = `
         `;
 document.head.appendChild(style);
 
-document.querySelectorAll('.skill-card').forEach(card => {
-  card.addEventListener('click', () => {
-    card.classList.toggle('active');
+document.querySelectorAll(".skill-card").forEach((card) => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("active");
   });
 });
 
-document.getElementById('work').addEventListener('click',() => {
-    document.querySelector('.pink').classList.remove('expand');
-    document.querySelector('.white').classList.remove('expand');
-    document.querySelector('.pink').classList.add('expand');
+document.getElementById("work").addEventListener("click", () => {
+  animation();
 
   setTimeout(() => {
-    document.querySelector('.white').classList.add('expand');
-  }, 350);
+    document.getElementById("home-section").classList.add("hide");
+    document.getElementById("work-section").classList.remove("hide");
 
-  setTimeout(() => {
-        document.querySelector('.pink').classList.remove('expand');
-    document.querySelector('.white').classList.remove('expand');
-    document.querySelector('.home-section').style.display = 'none';
-
-    const boxes = document.querySelectorAll('.work-section .video-box');
-  boxes.forEach((box, index) => {
-    setTimeout(() => {
-      box.classList.add('visible');
-    }, 100 * index); // stagger each one by 150ms
-  });
-  }, 1200);
-
-})
-
-function goHome() {
-  // Hide work-section and reset video boxes
-document.querySelector('.work-section').style.display = 'none';
-document.querySelectorAll('.work-section .video-box').forEach(box => {
-  box.classList.remove('visible');
+    const boxes = document.querySelectorAll(".work-section .video-box");
+    boxes.forEach((box, index) => {
+      setTimeout(() => {
+        box.classList.add("visible");
+      }, 100 * index);
+    });
+  }, 1000);
 });
+
+document.getElementById("home-button").addEventListener("click", () => {
+  document.getElementById("work-section").classList.add("hide");
+  about_content.classList.add("hide");
+  about_header.classList.add("hide");
+  about_section.classList.add("hide");
+  animation();
+
+  setTimeout(() => {
+    document.getElementById("home-section").classList.remove("hide");
+  }, 1000);
+});
+
+function animation() {
+  document.querySelector(".pink").classList.remove("expand");
+  document.querySelector(".white").classList.remove("expand");
+  document.querySelector(".pink").classList.add("expand");
+
+  setTimeout(() => {
+    document.querySelector(".white").classList.add("expand");
+  }, 1000);
+
+  setTimeout(() => {
+    document.querySelector(".pink").classList.remove("expand");
+    document.querySelector(".white").classList.remove("expand");
+  }, 2000);
 }
+
+const dropdownToggle = document.querySelector(".dropdown-toggle");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+
+// Toggle menu on toggle button click
+dropdownToggle.addEventListener("click", (e) => {
+  e.stopPropagation(); // Prevent bubbling to document
+  dropdownMenu.classList.toggle("show");
+});
+
+// Close dropdown if clicking outside
+document.addEventListener("click", (e) => {
+  if (!dropdownMenu.contains(e.target) && !dropdownToggle.contains(e.target)) {
+    dropdownMenu.classList.remove("show");
+  }
+});
+
+// Optional: also close when clicking any link inside menu
+document.querySelectorAll(".dropdown-menu a").forEach((link) => {
+  link.addEventListener("click", () => {
+    dropdownMenu.classList.remove("show");
+  });
+});
+
+function triggerAboutMeAnimation() {
+  const circle = document.querySelector(".profile-circle");
+  const line = document.querySelector(".about-line");
+
+  // Remove any existing animation classes
+  circle.classList.remove("jelly-appear");
+  line.classList.remove("line-expand");
+
+  // Trigger reflow to restart animation
+  void circle.offsetWidth;
+
+  // Add animation classes
+  circle.classList.add("jelly-appear");
+  setTimeout(() => {
+    line.classList.add("line-expand");
+  }, 1000);
+}
+
+document.getElementById("about-button").addEventListener("click", () => {
+  document.getElementById("home-section").classList.add("hide");
+  document.getElementById("work-section").classList.add("hide");
+
+  animation();
+
+  setTimeout(() => {
+  about_content.classList.remove("hide");
+  about_header.classList.remove("hide");
+  about_section.classList.remove("hide");
+  triggerAboutMeAnimation();
+  }, 1000);
+});
+
