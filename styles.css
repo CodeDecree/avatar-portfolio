@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   background-attachment: scroll; /* or fixed, if you want parallax feel */
-  background-color: #ffffff; /* your base background color */
+  background-color: #fbfbf4; /* your base background color */
   font-family: "Poppins", "Segoe UI", "Helvetica Neue", sans-serif;
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -108,7 +108,7 @@ a {
   margin: auto auto 0;
   display: inline-block;
   font-weight: 500;
-  color: #948c4f8d;
+  color: #F49586;
   cursor: pointer;
   pointer-events: none;
   line-height: 1;
@@ -577,8 +577,8 @@ body {
 }
 
 .dropdown-toggle {
-  background-color: whitesmoke;
-  color: black;
+  background-color: #F49586;
+  color: #fbfbf4;
   padding: 1rem;
   width: 2rem;
   height: 2rem;
@@ -597,7 +597,7 @@ body {
   position: absolute;
   top: 70px;
   left: 0;
-  background-color: whitesmoke;
+  background-color: #F49586;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -615,11 +615,11 @@ body {
   align-items: center;
   gap: 1rem;
 
-  transition: background 0.3s;
+  transition: all 0.3s;
 }
 
 .dropdown-menu a:hover {
-  background-color: #f0f0f0;
+  background-color: #F49586;
 }
 
 /* .dropdown:hover .dropdown-menu {
@@ -654,9 +654,9 @@ body {
 }
 
 .profile-circle {
-  width: 100px;
-  height: 100px;
-  background-color: black;
+  width: 80px;
+  height: 80px;
+  background-color: #5E5F52;
   margin-right: 2rem;
   border-radius: 50%;
   transform: scale(0);
@@ -665,12 +665,17 @@ body {
 .about-line {
   position: relative;
   height: 4px;
-  background-color: black;
+  background-color: #5E5F52;
   transform-origin: left;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 40px;
+  margin-right: 40px;
   width: 0;
   top: -4px;
+}
+
+.about-me h1 {
+  padding: 0;
+  margin: 0;
 }
 
 /* Animation classes */

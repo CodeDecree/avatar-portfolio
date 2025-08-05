@@ -342,20 +342,18 @@ document.getElementById("work").addEventListener("click", () => {
 });
 
 document.getElementById("home-button").addEventListener("click", () => {
-  document.getElementById("work-section").classList.add("hide");
-  about_content.classList.add("hide");
-  about_header.classList.add("hide");
-  about_section.classList.add("hide");
   animation();
 
   setTimeout(() => {
+    about_content.classList.add("hide");
+    about_header.classList.add("hide");
+    about_section.classList.add("hide");
+    document.getElementById("work-section").classList.add("hide");
     document.getElementById("home-section").classList.remove("hide");
   }, 1000);
 });
 
 function animation() {
-  document.querySelector(".pink").classList.remove("expand");
-  document.querySelector(".white").classList.remove("expand");
   document.querySelector(".pink").classList.add("expand");
 
   setTimeout(() => {
@@ -410,16 +408,14 @@ function triggerAboutMeAnimation() {
 }
 
 document.getElementById("about-button").addEventListener("click", () => {
-  document.getElementById("home-section").classList.add("hide");
-  document.getElementById("work-section").classList.add("hide");
-
   animation();
 
   setTimeout(() => {
-  about_content.classList.remove("hide");
-  about_header.classList.remove("hide");
-  about_section.classList.remove("hide");
-  triggerAboutMeAnimation();
+    about_content.classList.remove("hide");
+    about_header.classList.remove("hide");
+    about_section.classList.remove("hide");
+    document.getElementById("work-section").classList.add("hide");
+    document.getElementById("home-section").classList.add("hide");
+    triggerAboutMeAnimation();
   }, 1000);
 });
-

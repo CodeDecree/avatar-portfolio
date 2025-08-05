@@ -103,24 +103,24 @@ document.querySelectorAll("#work-section .video-box video").forEach((video) => {
 });
 
 document.getElementById("work-button").addEventListener("click", () => {
-  document.getElementById("home-section").classList.add("hide");
-  about_content.classList.add("hide");
-  about_header.classList.add("hide");
-  about_section.classList.add("hide");
   animation();
-
+  
   setTimeout(() => {
+    document.getElementById("home-section").classList.add("hide");
+    about_content.classList.add("hide");
+    about_header.classList.add("hide");
+    about_section.classList.add("hide");
     document.getElementById("work-section").classList.remove("hide");
   }, 1000);
 });
 
 document.getElementById("about-button").addEventListener("click", () => {
-  document.getElementById("home-section").classList.add("hide");
-  document.getElementById("work-section").classList.add("hide");
-
+  
   animation();
-
+  
   setTimeout(() => {
+    document.getElementById("home-section").classList.add("hide");
+    document.getElementById("work-section").classList.add("hide");
       about_content.classList.remove("hide");
   about_header.classList.remove("hide");
   about_section.classList.remove("hide");

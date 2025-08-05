@@ -5,19 +5,19 @@
   transform: translateX(-50%);
   width: 0px;
   height: 0px;
-  border-radius: 50%;
+  border-radius: 70%;
   transform-origin: center bottom;
   scale: 1;
   z-index: 9999;
 }
 
 .pink {
-  background-color: #e7dd93;
+  background-color: #F49586;
   z-index: 9999;
 }
 
 .white {
-  background-color: #ffffff;
+  background-color: #fbfbf4;
   z-index: 9999;
 }
 
