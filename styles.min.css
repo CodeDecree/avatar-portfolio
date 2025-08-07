@@ -925,6 +925,15 @@ body {
   align-items: center;
 }
 
+.header-wrapper a {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+
 .profile-circle {
   width: 80px;
   height: 80px;
